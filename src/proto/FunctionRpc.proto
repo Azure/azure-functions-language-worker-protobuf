@@ -7,7 +7,7 @@ option java_outer_classname = "FunctionProto";
 option objc_class_prefix = "FunctionRpc";
 option csharp_namespace = "Microsoft.Azure.WebJobs.Script.Grpc.Messages";
 
-package FunctionRpc;
+package FunctionsRpcMessages;
 
 import "google/protobuf/duration.proto";
 
