@@ -65,6 +65,10 @@ message StreamingMessage {
 
     // Worker logs a message back to the host
     RpcLog rpc_log = 2;
+
+    FunctionEnvironmentRequest function_environment_load_request = 25;
+
+    FunctionEnvironmentResponse function_environment_load_response = 26;
   }
 }
 
@@ -178,6 +182,16 @@ message WorkerStatusRequest{
 
 // NOT USED
 message WorkerStatusResponse {
+}
+
+message FunctionEnvironmentLoadRequest {
+  // Environment variables from the current process
+  map<string, string> environment_variables = 1;
+}
+
+message FunctionEnvironmentLoadResponse {
+  // Status of the response
+  StatusResult result = 3;
 }
 
 // Host tells the worker to load a Function
