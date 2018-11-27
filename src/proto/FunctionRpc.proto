@@ -66,9 +66,9 @@ message StreamingMessage {
     // Worker logs a message back to the host
     RpcLog rpc_log = 2;
 
-    FunctionEnvironmentRequest function_environment_load_request = 25;
+    FunctionEnvironmentLoadRequest function_environment_load_request = 25;
 
-    FunctionEnvironmentResponse function_environment_load_response = 26;
+    FunctionEnvironmentLoadResponse function_environment_load_response = 26;
   }
 }
 
