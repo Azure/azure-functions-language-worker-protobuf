@@ -306,6 +306,7 @@ message BindingInfo {
       string = 0;
       binary = 1;
       stream = 2;
+      undefined = 3;
     }
 
   // Type of binding (e.g. HttpTrigger)
