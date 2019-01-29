@@ -17,3 +17,9 @@ message Dependency {
   string path = 3;
   bool is_downloadrequired = 4;
 }
+
+//Used to send the dependency management request to the language worker
+message DependencyManagementRequest {
+  repeated Dependency dependencies = 1;
+}
+

@@ -375,7 +375,11 @@ message RpcHttp {
   TypedData rawBody = 17;
 }
 
-//Used to send the dependency management request to the language worker
-message DependencyManagementRequest {
-  repeated Dependency dependencies = 1;
+// Language worker sends dependency download message back to host
+message DependencyDownloadResponse {
+  // unique function identifier
+  string function_id = 1;
+
+  // Result of dependency download operation
+  StatusResult result = 2;  
 }
