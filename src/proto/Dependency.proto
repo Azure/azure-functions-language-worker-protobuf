@@ -20,6 +20,8 @@ message Dependency {
 
 //Used to send the dependency management request to the language worker
 message DependencyManagementRequest {
-  repeated Dependency dependencies = 1;
+  //unique function identifier
+  string function_id = 1;
+  repeated Dependency dependencies = 2;
 }
 
