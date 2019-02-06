@@ -3,8 +3,9 @@ syntax = "proto3";
 
 // Light-weight representation of a .NET System.Security.Claims.ClaimsIdentity object.
 // This is the same serialization as found in EasyAuth, and needs to be kept in sync with
-// its ClaimsIdentitySlim definition.
-message RpcIdentity {
+// its ClaimsIdentitySlim definition, as seen in the WebJobs extension:
+// https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/ClaimsIdentitySlim.cs
+message RpcClaimsIdentity {
   string authentication_type = 1;
   string name_claim_type = 2;
   string role_claim_type = 3;
@@ -13,7 +14,8 @@ message RpcIdentity {
 
 // Light-weight representation of a .NET System.Security.Claims.Claim object.
 // This is the same serialization as found in EasyAuth, and needs to be kept in sync with
-// its ClaimSlim definition.
+// its ClaimSlim definition, as seen in the WebJobs extension:
+// https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/ClaimSlim.cs
 message RpcClaim {
   string value = 1;
   string type = 2;

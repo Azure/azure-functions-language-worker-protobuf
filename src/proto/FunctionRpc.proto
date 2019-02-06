@@ -10,7 +10,7 @@ option go_package ="github.com/Azure/azure-functions-go-worker/internal/rpc";
 package AzureFunctionsRpcMessages;
 
 import "google/protobuf/duration.proto";
-import "deps/IdentityRpc.proto";
+import "identity/ClaimsIdentityRpc.proto";
 
 // Interface exported by the server.
 service FunctionRpc {
@@ -380,5 +380,5 @@ message RpcHttp {
   map<string,string> query = 15;
   bool enable_content_negotiation= 16;
   TypedData rawBody = 17;
-  repeated RpcIdentity identities = 18;
+  repeated RpcClaimsIdentity identities = 18;
 }
