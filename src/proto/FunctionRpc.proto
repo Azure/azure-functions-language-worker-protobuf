@@ -71,9 +71,12 @@ message StreamingMessage {
     FunctionEnvironmentReloadRequest function_environment_reload_request = 25;
 
     FunctionEnvironmentReloadResponse function_environment_reload_response = 26;
-	
-	//Used to send the dependency management request to the language worker
-	DependencyManagementRequest dependency_management_request = 27;
+
+    //Used to send the dependency management request to the language worker
+    DownloadDependencyRequest download_dependency_request = 27;
+
+    //The response object for dependency download from worker
+    DependencyDownloadResponse dependency_download_response = 28;
   }
 }
 
