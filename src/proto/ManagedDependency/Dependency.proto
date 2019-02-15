@@ -10,18 +10,23 @@ option go_package ="github.com/Azure/azure-functions-go-worker/internal/rpc";
 package AzureFunctionsRpcMessages;
 
 
-//Used to send the managed dependency module for the language worker to download the client module
+//Used to send the manaed dependency module for the language worker to download the client module
 message Dependency {
   string name = 1;
-  string major_version = 2; 
+  string version = 2; 
   string path = 3;
   bool is_download_required = 4;
 }
 
 //Used to send the dependency management request to the language worker
-message DependencyManagementRequest {
+message DownloadDependencyRequest {
   //unique function identifier
-  string function_id = 1;
-  repeated Dependency dependencies = 2;
+  repeated Dependency dependencies = 1;
 }
 
+//The enumeration to add capabilities in the language worker to indicate if dependencies download is enabled
+enum EnumDependencies {
+  DependenciesInstalltionEnabled = 0;
+  True = 1;
+  False = 2;
+}
