@@ -15,7 +15,7 @@ message Dependency {
   string name = 1;
   string major_version = 2; 
   string path = 3;
-  bool is_downloadrequired = 4;
+  bool is_download_required = 4;
 }
 
 //Used to send the dependency management request to the language worker
