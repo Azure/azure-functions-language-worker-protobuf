@@ -11,6 +11,7 @@ package AzureFunctionsRpcMessages;
 
 import "google/protobuf/duration.proto";
 import "Dependency.proto";
+import "identity/ClaimsIdentityRpc.proto";
 
 // Interface exported by the server.
 service FunctionRpc {
@@ -305,11 +306,21 @@ message BindingInfo {
       inout = 2;
     }
 
+    // Indicates the type of the data for the binding
+    enum DataType {
+      undefined = 0;
+      string = 1;
+      binary = 2;
+      stream = 3;
+    }
+
   // Type of binding (e.g. HttpTrigger)
   string type = 2;
 
   // Direction of the given binding
   Direction direction = 3;
+
+  DataType data_type = 4;
 }
 
 // Used to send logs back to the Host 
@@ -373,6 +384,7 @@ message RpcHttp {
   map<string,string> query = 15;
   bool enable_content_negotiation= 16;
   TypedData rawBody = 17;
+  repeated RpcClaimsIdentity identities = 18;
 }
 
 // Language worker sends dependency download message back to host
