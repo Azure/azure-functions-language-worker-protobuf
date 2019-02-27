@@ -107,9 +107,6 @@ message WorkerInitResponse {
 
   // Status of the response
   StatusResult result = 3;
-
-  //The well known features supported by worker runtime
-  repeated WellKnownFeatures wellknown_features = 4;
 }
 
 // Used by the host to determine success/failure/cancellation
@@ -207,8 +204,8 @@ message FunctionLoadRequest {
   // Metadata for the request
   RpcFunctionMetadata metadata = 2;
 
-  //Used to send the dependency management request to the language worker
-  DownloadDependencyRequest download_dependency_request = 3;
+  //Used to send the dependency download request to the language worker
+  Dependency dependency_download_request = 3;
 }
 
 // Worker tells host result of reload
@@ -391,8 +388,4 @@ message RpcHttp {
   bool enable_content_negotiation= 16;
   TypedData rawBody = 17;
   repeated RpcClaimsIdentity identities = 18;
-}
-
-enum WellKnownFeatures {
-  ManagedDependencies = 0;
 }

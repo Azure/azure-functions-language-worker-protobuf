@@ -9,22 +9,9 @@ option go_package ="github.com/Azure/azure-functions-go-worker/internal/rpc";
 
 package AzureFunctionsRpcMessages;
 
-
 //Used to send the managed dependency module for the language worker to download the client module
 message Dependency {
-  //Name of the managed dependency modules e.g 'Az'
-  string name = 1;
-
-  //The major version requested by the client e.g '1'
-  string major_version = 2;
-
-  //The path where managed dependency modules will be installed e.g. '/home/manageddependencies'
-  string path = 3;
-}
-
-//Used to send the dependency download request to the language worker
-message DownloadDependencyRequest {
-  //The repeated list of dependencies
-  repeated Dependency dependencies = 1;
+  //Flag indicating if managed dependency is enabled or not 
+  bool enabled = 1;
 }
 
