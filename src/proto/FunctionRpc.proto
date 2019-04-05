@@ -375,6 +375,43 @@ message RpcException {
   string message = 2;
 }
 
+// Http cookie type. Note that only name and value are used for Http requests
+message RpcHttpCookie {
+  // Enum that lets servers require that a cookie shouoldn't be sent with cross-site requests
+  enum SameSite {
+      Undefined = 0;
+      Strict = 1;
+      Lax = 2;
+  }
+
+  // Cookie name
+  string name = 1;
+
+  // Cookie value
+  string value = 2;
+
+  // Specifies allowed hosts to receive the cookie
+  NullableString domain = 3;
+
+  // Specifies URL path that must exist in the requested URL
+  NullableString path = 4;
+
+  // Sets the cookie to expire at a specific date instead of when the client closes
+  NullableString expires = 5;
+
+  // Sets the cookie to only be sent with an encrypted request
+  bool secure = 6;
+
+  // Sets the cookie to be inaccessible to JavaScript's Document.cookie API
+  bool http_only = 7;
+
+  // Can restrict the cookie to not be sent with cross-site requests
+  SameSite same_site = 8;
+
+  // Sets the cookie to expire after a specific length of time instead of when the client closes
+  NullableString max_age = 9;
+}
+
 // TODO - solidify this or remove it
 message RpcHttp {
   string method = 1;
@@ -387,4 +424,5 @@ message RpcHttp {
   bool enable_content_negotiation= 16;
   TypedData rawBody = 17;
   repeated RpcClaimsIdentity identities = 18;
+  repeated RpcHttpCookie cookies = 19;
 }
