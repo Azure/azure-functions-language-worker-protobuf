@@ -11,6 +11,7 @@ package AzureFunctionsRpcMessages;
 
 import "google/protobuf/duration.proto";
 import "identity/ClaimsIdentityRpc.proto";
+import "shared/NullableTypes.proto";
 
 // Interface exported by the server.
 service FunctionRpc {
@@ -379,9 +380,9 @@ message RpcException {
 message RpcHttpCookie {
   // Enum that lets servers require that a cookie shouoldn't be sent with cross-site requests
   enum SameSite {
-      Undefined = 0;
-      Strict = 1;
-      Lax = 2;
+      None = 0;
+      Lax = 1;
+      Strict = 2;
   }
 
   // Cookie name
@@ -396,20 +397,21 @@ message RpcHttpCookie {
   // Specifies URL path that must exist in the requested URL
   NullableString path = 4;
 
-  // Sets the cookie to expire at a specific date instead of when the client closes
-  NullableString expires = 5;
+  // Sets the cookie to expire at a specific date instead of when the client closes.
+  // It is generally recommended that you use "Max-Age" over "Expires".
+  NullableTimestamp expires = 5;
 
   // Sets the cookie to only be sent with an encrypted request
-  bool secure = 6;
+  NullableBool secure = 6;
 
   // Sets the cookie to be inaccessible to JavaScript's Document.cookie API
-  bool http_only = 7;
+  NullableBool http_only = 7;
 
-  // Can restrict the cookie to not be sent with cross-site requests
+  // Allows servers to assert that a cookie ought not to be sent along with cross-site requests
   SameSite same_site = 8;
 
-  // Sets the cookie to expire after a specific length of time instead of when the client closes
-  NullableString max_age = 9;
+  // Number of seconds until the cookie expires. A zero or negative number will expire the cookie immediately.
+  NullableDouble max_age = 9;
 }
 
 // TODO - solidify this or remove it
