@@ -98,7 +98,7 @@ message WorkerInitRequest {
   map<string, RpcLog.Level> log_categories = 3;
 
   // Full path of worker.config.json location
-  string functions_worker_directory = 4;
+  string worker_directory = 4;
 }
 
 // Worker responds with the result of initializing itself
