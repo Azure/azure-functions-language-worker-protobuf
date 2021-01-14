@@ -16,6 +16,9 @@ import "shared/NullableTypes.proto";
 // Interface exported by the server.
 service FunctionRpc {
  rpc EventStream (stream StreamingMessage) returns (stream StreamingMessage) {}
+
+ // K6 interface for benchmarking worker code without function host
+ rpc EventSingle (StreamingMessage) return (StreamingMessage) {}
 }
 
 message StreamingMessage {
@@ -26,7 +29,7 @@ message StreamingMessage {
   oneof content {
 
     // Worker initiates stream
-    StartStream start_stream = 20; 
+    StartStream start_stream = 20;
 
     // Host sends capabilities/init data to worker
     WorkerInitRequest worker_init_request = 17;
@@ -49,19 +52,19 @@ message StreamingMessage {
 
     // Worker requests a desired action (restart worker, reload function)
     WorkerActionResponse worker_action_response = 7;
-    
+
     // Host sends required metadata to worker to load function
     FunctionLoadRequest function_load_request = 8;
     // Worker responds after loading with the load result
     FunctionLoadResponse function_load_response = 9;
-    
+
     // Host requests a given invocation
     InvocationRequest invocation_request = 4;
 
     // Worker responds to a given invocation
     InvocationResponse invocation_response = 5;
 
-    // Host sends cancel message to attempt to cancel an invocation. 
+    // Host sends cancel message to attempt to cancel an invocation.
     // If an invocation is cancelled, host will receive an invocation response with status cancelled.
     InvocationCancel invocation_cancel = 21;
 
@@ -81,7 +84,7 @@ message StreamingMessage {
 // Process.Start required info
 //   connection details
 //   protocol type
-//   protocol version 
+//   protocol version
 
 // Worker sends the host information identifying itself
 message StartStream {
@@ -89,7 +92,7 @@ message StartStream {
   string worker_id = 2;
 }
 
-// Host requests the worker to initialize itself 
+// Host requests the worker to initialize itself
 message WorkerInitRequest {
   // version of the host sending init request
   string host_version = 1;
@@ -177,7 +180,7 @@ message WorkerActionResponse {
     Restart = 0;
     Reload = 1;
   }
-  
+
   // action for this response
   Action action = 1;
 
@@ -248,7 +251,7 @@ message RpcFunctionMetadata {
 
   // base directory for the Function
   string directory = 1;
-  
+
   // Script file specified
   string script_file = 2;
 
@@ -421,7 +424,7 @@ message BindingInfo {
   DataType data_type = 4;
 }
 
-// Used to send logs back to the Host 
+// Used to send logs back to the Host
 message RpcLog {
   // Matching ILogger semantics
   // https://github.com/aspnet/Logging/blob/9506ccc3f3491488fe88010ef8b9eb64594abf95/src/Microsoft.Extensions.Logging/Logger.cs
@@ -468,7 +471,7 @@ message RpcLog {
   RpcLogCategory log_category = 8;
 }
 
-// Encapsulates an Exception 
+// Encapsulates an Exception
 message RpcException {
   // Source of the exception
   string source = 3;
@@ -522,7 +525,7 @@ message RpcHttpCookie {
 // TODO - solidify this or remove it
 message RpcHttp {
   string method = 1;
-  string url = 2; 
+  string url = 2;
   map<string,string> headers = 3;
   TypedData body = 4;
   map<string,string> params = 10;
