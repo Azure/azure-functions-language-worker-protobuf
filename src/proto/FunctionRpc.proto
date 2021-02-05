@@ -278,6 +278,12 @@ message InvocationRequest {
 
   // Populates activityId, tracestate and tags from host
   RpcTraceContext trace_context = 5;
+
+  // Current retry count
+  int32 retry_count = 6;
+
+  // Max retry count
+  int32 max_retry_count = 7;
 }
 
 // Host sends ActivityId, traceStateString and Tags from host
