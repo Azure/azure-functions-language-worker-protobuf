@@ -293,6 +293,19 @@ message RpcTraceContext {
 
 	// This corresponds to Activity.Current?.Tags
 	map<string, string> attributes = 3;
+
+  // This corresponds to Activity.Current?.ParentId
+  string parent_trace_id = 4;
+
+  // This corresponds to Activity.Current?.TraceStateString for now
+  // This is a future proof field in case if .ParentTraceStateString is
+  // introduced in the .NET SDK
+  string parent_trace_state = 5;
+
+  // This corresponds to Activity.Current?.Tags for now
+  // This is a future proof field in case if .ParentTags is introduced in
+  // the .NET SDK
+  map<string, string> parent_attributes = 6;
 }
 
 // Host sends retry context for a function invocation
