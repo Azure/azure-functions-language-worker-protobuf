@@ -271,8 +271,14 @@ message RpcFunctionMetadata {
   // Function language
   string language = 9;
 
-  // Raw binding info
+  // Raw binding info: string of jsonified binding metadata. One string = one binding
   repeated string raw_bindings = 10;
+
+  // Retry Options: string representation of JObject retry options (maxRetryCount, intervals, etc.)
+  string retry_options = 11;
+
+  // Configuration Source: string representation of JToken configuration source property in function metadata
+  string config_source = 12;
 }
 
 // Host tells worker it is ready to receive metadata
