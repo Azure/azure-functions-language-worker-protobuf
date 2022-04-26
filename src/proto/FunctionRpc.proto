@@ -298,6 +298,24 @@ message RpcFunctionMetadata {
 
   // A flag indicating if managed dependency is enabled or not
   bool managed_dependency_enabled = 14;
+
+  // Properties of the function metadata
+  RpcFunctionMetadataProperties = 15;
+}
+
+// Properties of Function Metadata 
+message RpcFunctionMetadataProperties {
+  // Indicates the type of programming model
+  enum ProgrammingModel {
+    Legacy = 0;
+    Stein = 1;
+  } 
+
+  // Programming model of the function
+  ProgrammingModel programming_model = 1;
+
+  // The starting line number of a function
+  string function_start_line_number = 2;
 }
 
 // Host tells worker it is ready to receive metadata
