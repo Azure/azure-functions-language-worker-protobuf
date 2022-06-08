@@ -300,6 +300,8 @@ message RpcFunctionMetadata {
   bool managed_dependency_enabled = 14;
 
   // Properties for function metadata
+  // They're usually specific to a worker and largely passed along to the controller API for use
+  // outside the host
    map<string,string> Properties = 16;
 }
 
