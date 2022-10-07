@@ -511,7 +511,7 @@ message BindingInfo {
       string = 1;
       binary = 2;
       stream = 3;
-      reference = 4;
+      bindingData = 4;
     }
 
   // Type of binding (e.g. HttpTrigger)
@@ -654,7 +654,7 @@ message RpcHttp {
 message BindingData
 {
     string Version = 1;
-    string ContentType = 2;
-    string Source = 3;
-    string Content = 4;
+    string Source = 2;
+    string ContentType = 3;
+    bytes Content = 4;
 }
