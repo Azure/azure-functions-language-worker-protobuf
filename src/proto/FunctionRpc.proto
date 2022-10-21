@@ -430,7 +430,7 @@ message TypedData {
     CollectionString collection_string = 9;
     CollectionDouble collection_double = 10;
     CollectionSInt64 collection_sint64 = 11;
-    BindingData bindingData = 12;
+    BindingData binding_data = 12;
   }
 }
 
@@ -511,7 +511,7 @@ message BindingInfo {
       string = 1;
       binary = 2;
       stream = 3;
-      bindingData = 4;
+      binding_data = 4;
     }
 
   // Type of binding (e.g. HttpTrigger)
@@ -657,6 +657,6 @@ message BindingData
 {
     string version = 1;
     string source = 2;
-    string contentType = 3;
+    string content_type = 3;
     bytes content = 4;
 }
