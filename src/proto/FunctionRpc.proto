@@ -653,8 +653,8 @@ message RpcHttp {
 
 message BindingData
 {
-    string Version = 1;
-    string Source = 2;
-    string ContentType = 3;
-    bytes Content = 4;
+    string version = 1;
+    string source = 2;
+    string contentType = 3;
+    bytes content = 4;
 }
