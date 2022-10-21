@@ -651,6 +651,8 @@ message RpcHttp {
   map<string,NullableString> nullable_query = 22;
 }
 
+// Message representing Microsoft.Azure.WebJobs.ParameterBindingData
+// Used for hydrating SDK-type bindings in out-of-proc workers
 message BindingData
 {
     string version = 1;
