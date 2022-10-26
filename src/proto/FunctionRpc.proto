@@ -511,7 +511,7 @@ message BindingInfo {
       string = 1;
       binary = 2;
       stream = 3;
-      binding_data = 4;
+      model_binding_data = 4;
     }
 
   // Type of binding (e.g. HttpTrigger)
