@@ -188,7 +188,7 @@ message WorkerTerminate {
 message FileChangeEventRequest {
   // Types of File change operations (See link for more info: https://msdn.microsoft.com/en-us/library/t6xf43e0(v=vs.110).aspx)
   enum Type {
-	  Unknown = 0;
+    Unknown = 0;
     Created = 1;
     Deleted = 2;
     Changed = 4;
@@ -370,14 +370,14 @@ message InvocationRequest {
 
 // Host sends ActivityId, traceStateString and Tags from host
 message RpcTraceContext {
-	// This corresponds to Activity.Current?.Id
-	string trace_parent = 1;
+  // This corresponds to Activity.Current?.Id
+  string trace_parent = 1;
 
-	// This corresponds to Activity.Current?.TraceStateString
-	string trace_state = 2;
+  // This corresponds to Activity.Current?.TraceStateString
+  string trace_state = 2;
 
-	// This corresponds to Activity.Current?.Tags
-	map<string, string> attributes = 3;
+  // This corresponds to Activity.Current?.Tags
+  map<string, string> attributes = 3;
 }
 
 // Host sends retry context for a function invocation
@@ -430,7 +430,7 @@ message TypedData {
     CollectionString collection_string = 9;
     CollectionDouble collection_double = 10;
     CollectionSInt64 collection_sint64 = 11;
-    BindingData binding_data = 12;
+    ModelBindingData model_binding_data = 12;
   }
 }
 
@@ -653,7 +653,7 @@ message RpcHttp {
 
 // Message representing Microsoft.Azure.WebJobs.ParameterBindingData
 // Used for hydrating SDK-type bindings in out-of-proc workers
-message BindingData
+message ModelBindingData
 {
     // The version of the binding data content
     string version = 1;
