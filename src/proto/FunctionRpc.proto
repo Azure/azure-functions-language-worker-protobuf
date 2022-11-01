@@ -663,9 +663,9 @@ message ModelBindingData
     // The extension source of the binding data
     string source = 2;
 
-    // The binding data content
+    // The content type of the binding data content
     string content_type = 3;
 
-    // The content type of the binding data content
+    // The binding data content
     bytes content = 4;
 }
