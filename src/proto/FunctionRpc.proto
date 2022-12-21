@@ -240,6 +240,13 @@ message FunctionEnvironmentReloadRequest {
 message FunctionEnvironmentReloadResponse {
   // Status of the response
   StatusResult result = 3;
+
+  // After specialization, worker sends capabilities & metadata.
+  // A map of worker supported features/capabilities
+  map<string, string> capabilities = 2;
+
+  // Worker metadata captured for telemetry purposes
+  WorkerMetadata worker_metadata = 1;
 }
 
 // Tell the out-of-proc worker to close any shared memory maps it allocated for given invocation
