@@ -337,6 +337,9 @@ message RpcFunctionMetadata {
   // A flag indicating if managed dependency is enabled or not
   bool managed_dependency_enabled = 14;
 
+  // Current retry context
+  RetryContext retry_context = 15;
+
   // Properties for function metadata
   // They're usually specific to a worker and largely passed along to the controller API for use
   // outside the host
