@@ -337,8 +337,8 @@ message RpcFunctionMetadata {
   // A flag indicating if managed dependency is enabled or not
   bool managed_dependency_enabled = 14;
 
-  // Current retry context
-  RetryContext retry_context = 15;
+  // Retry policy of the function
+  RetryPolicy retry = 15;
 
   // Properties for function metadata
   // They're usually specific to a worker and largely passed along to the controller API for use
@@ -700,4 +700,25 @@ message ModelBindingData
 // Used to encapsulate collection model_binding_data
 message CollectionModelBindingData {
   repeated ModelBindingData model_binding_data = 1;
+}
+
+// Retry policy which the worker sends the host when the worker indexes
+// a function. 
+message RetryPolicy {
+
+  // The retry strategy to use. Valid values are fixedDelay or exponentialBackoff.
+  string strategy = 1;
+
+  // The maximum number of retries allowed per function execution.
+  //  -1 means to retry indefinitely.
+  string max_retry_count = 2;
+
+  // The delay that's used between retries when you're using a fixedDelay strategy.
+  string delay_interval = 3;
+
+  // The minimum retry delay when you're using an exponentialBackoff strategy
+  string minimum_interval = 4;
+
+  // The maximum retry delay when you're using an exponentialBackoff strategy
+  string maximum_interval = 5;
 }
