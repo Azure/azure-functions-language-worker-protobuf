@@ -442,6 +442,11 @@ message InvocationResponse {
 
   // Status of the invocation (success/failure/canceled)
   StatusResult result = 3;
+
+  // Reuses values from InvocationRequest with some additions to the attributes field
+  // Enables propagation of tags from worker -> host.
+  RpcTraceContext trace_context = 4;
+
 }
 
 message WorkerWarmupRequest {
