@@ -475,7 +475,7 @@ message ManagedIdentityTokenRequest {
   string resource = 1;
   string client_id = 2;
   string api_version = 3;
-  // HMAC-SHA256 over the outer request ID and unsigned request using the runtime access key.
+  // Reserved for a future approved Runtime-relay authentication design; empty and unused by the current BYOC brokerage implementation.
   bytes runtime_access_key_signature = 4;
 }
 
