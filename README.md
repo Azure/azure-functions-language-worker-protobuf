@@ -36,13 +36,6 @@ From within the Azure Functions language worker repo:
     -	`git commit -m "Updated subtree from https://github.com/azure/azure-functions-language-worker-protobuf. Tag: <tag-name>. Commit: <commit hash>"`
     -	`git push`
 
-## Worker-delivered host.json configuration
-
-See `WorkerInitResponse.host_json` and `HostJsonConfiguration` in
-[FunctionRpc.proto](src/proto/FunctionRpc.proto) for the delivery contract.
-Implementation context is tracked in
-[APP-01](https://github.com/Azure/azure-functions-host/issues/12049).
-
 ## Consuming FunctionRPC.proto
 *Note: Update versionNumber before running following commands*
 
